@@ -163,6 +163,7 @@
   }
   .offer-fold .pkg-fold-text .pkg-tag,
   .offer-fold .pkg-fold-index{color:var(--silver-light);}
+  .offer-fold .pkg-price .amount{font-size:40px;}
   @media (max-width:860px){
     .offer-fold{grid-template-columns:1fr;min-height:auto;}
     .offer-fold .pkg-fold-photo{min-height:60vh;}
@@ -214,7 +215,7 @@
   .pkg-fold-photo .tier-flag{
     position:absolute;top:26px;left:26px;z-index:2;
     background:rgba(23,19,16,0.72);color:var(--gold-light);
-    font-size:10px;letter-spacing:0.25em;text-transform:uppercase;padding:8px 14px;
+    font-size:14px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;padding:10px 18px;
   }
   .pkg-fold--1 .pkg-fold-photo .tier-flag{color:var(--silver-light);}
 
@@ -273,6 +274,11 @@
     background:linear-gradient(180deg, transparent, rgba(216,177,106,0.55), transparent);
     transform:translateX(-50%);
   }
+  .pkg-transition::after{
+    content:"";position:absolute;left:8%;right:8%;top:50%;height:1px;
+    background:linear-gradient(90deg, transparent, rgba(216,177,106,0.7), transparent);
+    transform:translateY(-50%);
+  }
 
   @media (max-width:860px){
     .pkg-fold{grid-template-columns:1fr;min-height:auto;}
@@ -286,12 +292,14 @@
     .tier-flag{
       position:static;display:block;width:100%;
       background:var(--ink);color:var(--gold-light) !important;
-      font-size:13px;letter-spacing:0.3em;text-align:center;
-      padding:18px 14px;margin:0;
+      font-size:18px;font-weight:600;letter-spacing:0.2em;text-align:center;
+      padding:20px 14px;margin:0;
     }
   }
 
-  .note{text-align:center;max-width:560px;margin:40px auto 100px;padding:0 24px;font-size:12.5px;color:var(--charcoal-soft);font-style:italic;}
+  .notice-band{padding:70px 24px 100px;background:var(--cream);}
+  .notice-band-inner{max-width:640px;margin:0 auto;border:1px solid var(--rule);background:var(--paper);padding:40px 44px;text-align:center;}
+  .notice-band-inner p{font-size:14px;color:var(--charcoal-soft);line-height:1.7;margin-top:12px;}
 
   /* ---------- DEPOIMENTOS (grade de prints) ---------- */
   .testimonials{padding:100px 24px 110px;background:var(--cream-deep);}
@@ -414,7 +422,7 @@
       <div class="logo-sub">FOTOGRAFIA</div>
     </div>
     <div class="hero-content">
-      <h1>Quinze anos se vivem uma vez. As fotos ficam para sempre.</h1>
+      <h1>Quinze anos se vivem uma vez.<br>As fotos ficam para sempre.</h1>
       <p class="lede">Proposta de investimento fotográfico para a celebração de 15 anos, com cobertura completa, ensaios e álbuns pensados para registrar cada detalhe dessa data.</p>
       <div class="scroll-cue">Investimento · 15 Anos</div>
     </div>
@@ -457,7 +465,7 @@
     <!-- PACOTE I — PRATA -->
     <article class="pkg-fold pkg-fold--1" id="pacote-1" data-fold="1">
       <div class="pkg-fold-photo">
-        <span class="tier-flag">Pacote I</span>
+        <span class="tier-flag">Pacote Prata</span>
         <img src="https://raw.githubusercontent.com/Contraktor2026/fontez-15anos-pagina-vendas/main/imagens/1%20dobra.jfif" alt="Ensaio Prata">
       </div>
       <div class="pkg-fold-text reveal">
@@ -469,11 +477,11 @@
           <li>Tempo de cobertura: <b>6 horas</b></li>
           <li>Fotografado por <b>1 fotógrafo</b></li>
           <li>Até <b>60 convidados</b></li>
-          <li><b>Todas</b> as fotos entregues em alta resolução</li>
+          <li><b>Todas</b> as fotos entregues em alta resolução via link do Google Drive</li>
         </ul>
         <div class="pkg-price">
           <span class="amount">R$ 2.100</span>
-          <span class="installments">40% de entrada + restante até a data do evento, via PIX ou cartão de crédito (consultar taxas)</span>
+          <span class="installments">40% de entrada + restante até 1 semana antes do evento, via PIX ou cartão de crédito (consultar taxas)</span>
           <span class="pix-note">5% de desconto pagando o valor total à vista no PIX</span>
         </div>
         <span class="pkg-badge">Proposta sem álbum</span>
@@ -485,7 +493,7 @@
     <!-- PACOTE II — OURO I -->
     <article class="pkg-fold pkg-fold--2" id="pacote-2" data-fold="2">
       <div class="pkg-fold-photo">
-        <span class="tier-flag">Pacote II</span>
+        <span class="tier-flag">Pacote Ouro I</span>
         <img src="https://raw.githubusercontent.com/Contraktor2026/fontez-15anos-pagina-vendas/main/imagens/fotos%20novas%20para%20colocar%20na%20pagina/IMG_1751.WEBP" alt="Ensaio Ouro I">
       </div>
       <div class="pkg-fold-text reveal">
@@ -495,7 +503,7 @@
         <ul>
           <li>Cobertura fotográfica do aniversário: <b>making-of, recepção e festa</b>, sem limite de horas</li>
           <li>Fotografado por <b>2 fotógrafos</b></li>
-          <li><b>Todas</b> as fotos entregues em alta resolução</li>
+          <li><b>Todas</b> as fotos entregues em alta resolução via link do Google Drive</li>
         </ul>
         <div class="pkg-extra-label">+ Sessão de fotos Fontez</div>
         <ul>
@@ -504,7 +512,7 @@
         </ul>
         <div class="pkg-price">
           <span class="amount">R$ 3.900</span>
-          <span class="installments">40% de entrada + restante até a data do evento, via PIX ou cartão de crédito (consultar taxas)</span>
+          <span class="installments">40% de entrada + restante até 1 semana antes do evento, via PIX ou cartão de crédito (consultar taxas)</span>
           <span class="pix-note">5% de desconto pagando o valor total à vista no PIX</span>
         </div>
         <span class="pkg-badge">Proposta sem álbum</span>
@@ -517,7 +525,7 @@
     <article class="pkg-fold pkg-fold--3" id="pacote-3" data-fold="3">
       <div class="sparkle-layer" id="pkg3Sparkles"></div>
       <div class="pkg-fold-photo">
-        <span class="tier-flag">Pacote III · completo</span>
+        <span class="tier-flag">Pacote Ouro II</span>
         <img src="https://raw.githubusercontent.com/Contraktor2026/fontez-15anos-pagina-vendas/main/imagens/fotos%20novas%20para%20colocar%20na%20pagina/15_anos_bianca-1265.jpg" alt="Ensaio Ouro II">
       </div>
       <div class="pkg-fold-text reveal">
@@ -530,7 +538,7 @@
         <ul>
           <li>Cobertura fotográfica do aniversário: <b>making-of, recepção e festa</b>, sem limite de horas</li>
           <li>Fotografado por <b>2 fotógrafos</b></li>
-          <li><b>Todas</b> as fotos editáveis entregues em alta resolução</li>
+          <li><b>Todas</b> as fotos entregues em alta resolução via link do Google Drive</li>
           <li>Álbum encadernado <b>25x25cm, 40 páginas</b> (80 fotos) + luva de courino</li>
         </ul>
         <div class="pkg-extra-label">+ Sessão de fotos Fontez</div>
@@ -540,20 +548,27 @@
         </ul>
         <div class="pkg-price">
           <span class="amount">R$ 5.900</span>
-          <span class="installments">40% de entrada + restante até a data do evento, via PIX ou cartão de crédito (consultar taxas)</span>
+          <span class="installments">40% de entrada + restante até 1 semana antes do evento, via PIX ou cartão de crédito (consultar taxas)</span>
           <span class="pix-note">5% de desconto pagando o valor total à vista no PIX</span>
         </div>
         <span class="pkg-badge">Proposta com álbum</span>
       </div>
     </article>
 
-    <p class="note">Consultar taxas do cartão de crédito. As propostas acima são apenas sugestões e podem ser modificadas de acordo com o planejamento do seu aniversário.</p>
+  </section>
+
+  <!-- AVISO -->
+  <section class="notice-band">
+    <div class="notice-band-inner reveal">
+      <div class="eyebrow">Importante</div>
+      <p>Consultar taxas do cartão de crédito. As propostas acima são apenas sugestões e podem ser modificadas de acordo com o planejamento do seu aniversário.</p>
+    </div>
   </section>
 
   <!-- MINI OFFER (sem festa) -->
   <article class="offer-fold" id="pacote-ensaio">
     <div class="pkg-fold-photo">
-      <span class="tier-flag">Sessão avulsa</span>
+      <span class="tier-flag">Sessão 15 Anos</span>
       <img src="https://raw.githubusercontent.com/Contraktor2026/fontez-15anos-pagina-vendas/main/imagens/fotos%20novas%20para%20colocar%20na%20pagina/sess%C3%A3o%20avulsa.jpg" alt="Sessão avulsa">
     </div>
     <div class="pkg-fold-text reveal">
@@ -565,7 +580,7 @@
         <li>Sessão fotográfica de 15 anos</li>
         <li><b>2 horas</b> de ensaio</li>
         <li><b>2 trocas</b> de roupa</li>
-        <li><b>70 fotos</b> editadas, entregues em alta resolução</li>
+        <li><b>50 fotos</b> editadas, entregues em alta resolução via link do Google Drive</li>
       </ul>
       <div class="pkg-price">
         <span class="amount">R$ 870</span>
@@ -615,6 +630,7 @@
       <a href="https://wa.me/5548998593027" target="_blank" rel="noopener">WhatsApp (48) 99859-3027</a>
     </div>
     <div class="copyright">Fontez Fotografia, Santa Catarina</div>
+    <div class="copyright" style="margin-top:8px;">Validade do orçamento: 30 dias</div>
   </footer>
 
   <script>
