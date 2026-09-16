@@ -1,0 +1,714 @@
+﻿<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@200;300;400;500;600&display=swap');
+  :root{
+    --cream: #f7f1e6;
+    --cream-deep: #efe3cd;
+    --paper: #fbf7ef;
+    --charcoal: #2b241d;
+    --charcoal-soft: #55493a;
+    --ink: #171310;
+    --gold: #a97c34;
+    --gold-deep: #8a611f;
+    --gold-light: #d8b16a;
+    --silver: #9a9186;
+    --silver-light: #c7c0b2;
+    --rule: #ddceac;
+    --fold-0: #262019;
+    --fold-1: #201e1a;
+    --fold-2: #2b1d10;
+    --fold-3: #170e05;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--charcoal);
+    font-family:'Poppins',sans-serif;
+    font-weight:300;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{display:block;width:100%;height:100%;object-fit:cover;}
+  .eyebrow{
+    font-size:11px;
+    letter-spacing:0.35em;
+    text-transform:uppercase;
+    color:var(--gold-deep);
+    font-weight:500;
+  }
+  h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:400;color:var(--ink);}
+  .rule{width:52px;height:1px;background:var(--gold);margin:20px auto;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    color:var(--paper);
+    overflow:hidden;
+  }
+  .hero .bg{position:absolute;inset:0;}
+  .hero .bg img{object-position:80% 55%;}
+  .hero::after{
+    content:"";
+    position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(20,16,12,0.15) 0%, rgba(20,16,12,0.35) 55%, rgba(15,12,9,0.92) 100%);
+  }
+  .hero-top{
+    position:relative;padding-top:44px;
+    display:flex;flex-direction:column;align-items:center;
+    z-index:2;
+    flex-shrink:0;
+  }
+  .logo-mark{font-weight:300;letter-spacing:0.5em;font-size:15px;}
+  .logo-mark b{font-weight:600;}
+  .logo-sub{font-size:10px;letter-spacing:0.55em;color:var(--gold-light);margin-top:6px;}
+  .hero-content{
+    position:relative;z-index:2;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    width:100%;
+    padding:0 24px 90px;
+    text-align:center;
+  }
+  .hero h1{
+    font-size:clamp(36px, 6.4vw, 68px);
+    font-style:italic;
+    color:var(--paper);
+    max-width:16ch;
+    margin:0 auto;
+    line-height:1.12;
+  }
+  .hero p.lede{
+    max-width:480px;
+    margin:24px auto 0;
+    color:#d8cfc0;
+    font-size:14.5px;
+  }
+  .scroll-cue{
+    margin-top:44px;
+    font-size:10px;
+    letter-spacing:0.3em;
+    text-transform:uppercase;
+    color:#bfae8f;
+  }
+
+  /* ---------- INTRO STRIP ---------- */
+  .intro{
+    max-width:760px;
+    margin:0 auto;
+    padding:110px 24px 90px;
+    text-align:center;
+  }
+  .intro h2{font-size:clamp(26px,3.8vw,38px);font-style:italic;margin:14px 0 20px;}
+  .intro p{color:var(--charcoal-soft);font-size:14.5px;max-width:560px;margin:0 auto;}
+
+  /* ---------- MANIFESTO (split, dark) ---------- */
+  .manifesto{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    background:var(--ink);
+    color:var(--paper);
+  }
+  .manifesto .photo{min-height:520px;}
+  .manifesto .text{
+    display:flex;flex-direction:column;justify-content:center;
+    padding:70px 64px;
+  }
+  .manifesto blockquote{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:clamp(22px,2.6vw,30px);
+    line-height:1.55;
+  }
+  .manifesto mark{
+    background:none;color:var(--gold-light);font-style:normal;
+    border-bottom:1px solid var(--gold);padding-bottom:1px;
+  }
+  .manifesto cite{
+    display:block;margin-top:30px;font-style:normal;
+    font-size:11.5px;letter-spacing:0.25em;text-transform:uppercase;color:#a99a7d;
+  }
+  @media (max-width:820px){
+    .manifesto{grid-template-columns:1fr;}
+    .manifesto .photo{min-height:340px;}
+    .manifesto .text{padding:56px 30px;}
+  }
+
+  /* ---------- MINI OFFER (sessão avulsa, sem festa) — mesmo layout dos pkg-fold ---------- */
+  .offer-fold{
+    position:relative;
+    min-height:640px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    background:var(--fold-0);
+    color:var(--paper);
+    overflow:hidden;
+  }
+  .offer-fold .pkg-fold-photo{background:var(--fold-0);}
+  .offer-fold .pkg-fold-photo::after{background:linear-gradient(to right, transparent 42%, var(--fold-0) 100%);}
+  .pkg-fold-photo-placeholder{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg, rgba(216,177,106,0.16), transparent 60%), rgba(0,0,0,0.3);
+    border:1px dashed rgba(216,177,106,0.35);
+    color:rgba(216,177,106,0.6);font-size:11px;letter-spacing:0.25em;text-transform:uppercase;
+  }
+  .offer-fold .pkg-fold-text .pkg-tag,
+  .offer-fold .pkg-fold-index{color:var(--silver-light);}
+  @media (max-width:860px){
+    .offer-fold{grid-template-columns:1fr;min-height:auto;}
+    .offer-fold .pkg-fold-photo{min-height:60vh;}
+  }
+
+  /* ---------- PACKAGES INTRO ---------- */
+  .section-head{text-align:center;padding:110px 24px 10px;}
+  .section-head h2{font-size:clamp(30px,4.4vw,44px);font-style:italic;margin-top:14px;}
+  .section-head p{max-width:540px;margin:16px auto 0;color:var(--charcoal-soft);font-size:14.5px;}
+  .pkg-cue{margin-top:34px;font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--charcoal-soft);}
+
+  /* ---------- PACKAGE RAIL (I / II / III wayfinding) ---------- */
+  .pkg-rail{
+    position:fixed;right:26px;top:50%;transform:translateY(-50%);z-index:40;
+    display:flex;flex-direction:column;gap:28px;
+    opacity:0;visibility:hidden;transition:opacity .5s ease;
+  }
+  .pkg-rail.is-visible{opacity:1;visibility:visible;}
+  .pkg-rail a{display:flex;align-items:center;gap:9px;text-decoration:none;}
+  .pkg-rail .dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.32);transition:background .3s ease, transform .3s ease, box-shadow .3s ease;}
+  .pkg-rail .num{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:11px;color:rgba(255,255,255,0.55);opacity:0;transform:translateX(4px);transition:opacity .3s ease, transform .3s ease;}
+  .pkg-rail a:hover .num, .pkg-rail a.active .num{opacity:1;transform:translateX(0);}
+  .pkg-rail a.active .dot{background:var(--gold-light);transform:scale(1.5);box-shadow:0 0 8px rgba(216,177,106,0.75);}
+  @media (max-width:860px){.pkg-rail{display:none;}}
+
+  /* ---------- PACKAGE FOLDS (one delivery per fold, backgrounds escalate) ---------- */
+  .pkg-fold{
+    position:relative;
+    min-height:100vh;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    background:var(--fold-1);
+    color:var(--paper);
+    overflow:hidden;
+  }
+  .pkg-fold--2{background:var(--fold-2);}
+  .pkg-fold--3{background:var(--fold-3);}
+  .pkg-fold--3 .pkg-fold-photo img{object-position:78% 20%;}
+
+  .pkg-fold-photo{position:relative;min-height:100%;min-width:0;}
+  .pkg-fold-text{min-width:0;}
+  .pkg-fold-photo img{width:100%;height:100%;object-fit:cover;filter:saturate(0.94) contrast(1.02);}
+  .pkg-fold-photo::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(to right, transparent 42%, var(--fold-1) 100%);
+  }
+  .pkg-fold--2 .pkg-fold-photo::after{background:linear-gradient(to left, transparent 42%, var(--fold-2) 100%);}
+  .pkg-fold--3 .pkg-fold-photo::after{background:linear-gradient(to right, transparent 42%, var(--fold-3) 100%);}
+  .pkg-fold-photo .tier-flag{
+    position:absolute;top:26px;left:26px;z-index:2;
+    background:rgba(23,19,16,0.72);color:var(--gold-light);
+    font-size:10px;letter-spacing:0.25em;text-transform:uppercase;padding:8px 14px;
+  }
+  .pkg-fold--1 .pkg-fold-photo .tier-flag{color:var(--silver-light);}
+
+  .pkg-fold--2 .pkg-fold-photo{order:2;}
+  .pkg-fold--2 .pkg-fold-text{order:1;}
+
+  .pkg-fold-text{
+    display:flex;flex-direction:column;justify-content:center;
+    padding:90px 64px;position:relative;z-index:2;
+  }
+  .pkg-fold-index{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;letter-spacing:0.3em;color:var(--gold-light);margin-bottom:20px;text-transform:uppercase;}
+  .pkg-fold-index span{color:#83795f;margin-left:5px;font-size:11px;letter-spacing:0.2em;}
+  .pkg-fold--1 .pkg-fold-index{color:var(--silver-light);}
+
+  .pkg-fold-text .pkg-tag{font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold-light);}
+  .pkg-fold--1 .pkg-fold-text .pkg-tag{color:var(--silver-light);}
+  .pkg-fold-text h3{font-style:italic;margin:10px 0 26px;line-height:1.15;color:var(--paper);}
+  .pkg-fold--1 .pkg-fold-text h3{font-size:clamp(28px,3.2vw,40px);}
+  .pkg-fold--2 .pkg-fold-text h3{font-size:clamp(30px,3.4vw,44px);}
+  .pkg-fold--3 .pkg-fold-text h3{font-size:clamp(32px,3.8vw,48px);}
+  .pkg-fold-text{text-align:left;}
+  .pkg-fold-text ul{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:6px;max-width:440px;text-align:left;}
+  .pkg-fold-text li{font-size:13.5px;color:#d8cfc0;padding-left:20px;position:relative;text-align:left;}
+  .pkg-fold-text li::before{content:"◆";font-size:7px;position:absolute;left:0;top:5px;color:var(--gold-light);}
+  .pkg-fold--1 .pkg-fold-text li::before{color:var(--silver-light);}
+  .pkg-fold-text li b{color:var(--paper);font-weight:500;}
+  .pkg-fold-text .pkg-extra-label{margin-top:22px;font-size:10.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold-light);opacity:0.85;}
+  .pkg-fold--1 .pkg-fold-text .pkg-extra-label{color:var(--silver-light);}
+  .pkg-fold-text .pkg-price{margin-top:30px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;}
+  .pkg-fold-text .pkg-price .amount{font-family:'Cormorant Garamond',serif;color:var(--gold-light);position:relative;overflow:hidden;display:inline-block;}
+  .pkg-fold--1 .pkg-fold-text .pkg-price .amount{font-size:36px;color:var(--silver-light);}
+  .pkg-fold--2 .pkg-fold-text .pkg-price .amount{font-size:40px;}
+  .pkg-fold--3 .pkg-fold-text .pkg-price .amount{font-size:46px;}
+  .pkg-fold-text .pkg-price .installments{font-size:11px;color:#c9bfa8;}
+  .pkg-fold-text .pkg-price .pix-note{flex-basis:100%;font-size:11px;color:var(--gold-light);letter-spacing:0.02em;}
+  .pkg-fold-text .pkg-badge{display:inline-block;margin-top:18px;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#d8cfc0;border:1px solid rgba(216,177,106,0.4);padding:7px 14px;}
+  .pkg-video-embed{position:relative;width:100%;max-width:440px;padding-top:56.25%;margin-bottom:20px;overflow:hidden;border:1px solid rgba(216,177,106,0.35);}
+  .pkg-video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+  .pkg-fold--1 .pkg-fold-text .pkg-badge{border-color:rgba(199,192,178,0.45);}
+
+  .pkg-fold--3 .pkg-fold-text{box-shadow:inset 0 0 0 1px rgba(216,177,106,0.22);}
+  .pkg-fold--3 .pkg-fold-text::before{
+    content:"Pacote mais completo";
+    display:inline-block;align-self:flex-start;
+    font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;
+    color:var(--ink);background:var(--gold-light);
+    padding:5px 12px;margin-bottom:16px;
+  }
+
+  /* seams that visually blend one package's world into the next */
+  .pkg-transition{position:relative;height:120px;}
+  .pkg-transition--1-2{background:linear-gradient(180deg, var(--fold-1), var(--fold-2));}
+  .pkg-transition--2-3{background:linear-gradient(180deg, var(--fold-2), var(--fold-3));}
+  .pkg-transition::before{
+    content:"";position:absolute;left:50%;top:16%;bottom:16%;width:1px;
+    background:linear-gradient(180deg, transparent, rgba(216,177,106,0.55), transparent);
+    transform:translateX(-50%);
+  }
+
+  @media (max-width:860px){
+    .pkg-fold{grid-template-columns:1fr;min-height:auto;}
+    .pkg-fold--2 .pkg-fold-photo, .pkg-fold--2 .pkg-fold-text{order:initial;}
+    .pkg-fold-photo{min-height:60vh;}
+    .pkg-fold-photo::after{background:linear-gradient(to bottom, transparent 50%, var(--fold-1) 100%) !important;}
+    .pkg-fold--2 .pkg-fold-photo::after{background:linear-gradient(to bottom, transparent 50%, var(--fold-2) 100%) !important;}
+    .pkg-fold--3 .pkg-fold-photo::after{background:linear-gradient(to bottom, transparent 50%, var(--fold-3) 100%) !important;}
+    .pkg-fold-text{padding:52px 26px;}
+    .pkg-transition{height:56px;}
+    .tier-flag{
+      position:static;display:block;width:100%;
+      background:var(--ink);color:var(--gold-light) !important;
+      font-size:13px;letter-spacing:0.3em;text-align:center;
+      padding:18px 14px;margin:0;
+    }
+  }
+
+  .note{text-align:center;max-width:560px;margin:40px auto 100px;padding:0 24px;font-size:12.5px;color:var(--charcoal-soft);font-style:italic;}
+
+  /* ---------- DEPOIMENTOS (grade de prints) ---------- */
+  .testimonials{padding:100px 24px 110px;background:var(--cream-deep);}
+  .testimonials-grid{max-width:700px;margin:60px auto 0;display:flex;flex-direction:column;gap:28px;}
+  .testimonial-shot-wrap{background:var(--paper);border:1px solid var(--rule);padding:20px;display:flex;align-items:center;}
+  .testimonial-shot{width:100%;height:auto;display:block;cursor:zoom-in;}
+  .lightbox-overlay{position:fixed;inset:0;background:rgba(10,8,6,0.92);display:none;align-items:center;justify-content:center;z-index:999;padding:30px;}
+  .lightbox-overlay.active{display:flex;}
+  .lightbox-overlay img{max-width:100%;max-height:100%;box-shadow:0 20px 60px rgba(0,0,0,0.5);}
+  .lightbox-close{position:absolute;top:20px;right:24px;color:#fff;font-size:32px;line-height:1;cursor:pointer;font-family:'Poppins',sans-serif;font-weight:300;}
+
+  /* ---------- FECHAMENTO ---------- */
+  .closing{position:relative;padding:150px 24px;text-align:center;background:var(--ink);color:var(--paper);}
+  .closing h2{font-size:clamp(28px,4.4vw,44px);font-style:italic;color:var(--paper);margin:14px 0 18px;}
+  .closing p{color:#d8cfc0;font-size:14px;max-width:420px;margin:0 auto 34px;}
+  .closing-btns{display:flex;flex-wrap:wrap;gap:18px;justify-content:center;}
+  .closing-btn{display:inline-block;padding:16px 42px;border:1px solid var(--gold-light);color:var(--gold-light);text-decoration:none;font-size:11px;letter-spacing:0.25em;text-transform:uppercase;transition:all .25s ease;}
+  .closing-btn:hover{background:var(--gold-light);color:var(--ink);}
+  .closing-btn--solid{background:var(--gold-light);color:var(--ink);}
+  .closing-btn--solid:hover{background:transparent;color:var(--gold-light);}
+
+  footer{padding:56px 24px 44px;text-align:center;background:var(--ink);color:#a99a7d;}
+  footer .flogo{font-size:13px;letter-spacing:0.4em;color:var(--paper);}
+  footer .contacts{margin-top:18px;display:flex;flex-wrap:wrap;gap:22px;justify-content:center;font-size:12px;}
+  footer .contacts a{color:#a99a7d;text-decoration:none;}
+  footer .contacts a:hover{color:var(--gold-light);}
+  footer .copyright{margin-top:26px;font-size:10px;color:#6b5f49;letter-spacing:0.1em;}
+
+  /* ---------- CURTAIN INTRO (sonho / abertura) ---------- */
+  .curtain-wrap{
+    position:fixed;inset:0;z-index:9999;
+    pointer-events:none;
+  }
+  .curtain-wrap.done{display:none;}
+  .curtain{
+    position:absolute;top:0;bottom:0;width:50%;
+    background:
+      radial-gradient(ellipse at center, #241d15 0%, var(--ink) 70%);
+    display:flex;align-items:center;justify-content:center;
+    transition:transform 1.4s cubic-bezier(.76,0,.24,1);
+  }
+  .curtain.left{left:0;transform:translateX(0);}
+  .curtain.right{right:0;transform:translateX(0);}
+  .curtain-wrap.opening .curtain.left{transform:translateX(-100%);}
+  .curtain-wrap.opening .curtain.right{transform:translateX(100%);}
+  .curtain-msg{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    text-align:center;color:var(--gold-light);
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:clamp(20px,3vw,30px);
+    opacity:1;transition:opacity .6s ease;
+    letter-spacing:0.02em;
+    width:90vw;max-width:520px;
+  }
+  .curtain-msg .eyebrow{display:block;color:#a99a7d;margin-bottom:14px;font-family:'Poppins',sans-serif;font-style:normal;}
+  .curtain-wrap.opening .curtain-msg{opacity:0;}
+  .curtain-spark{
+    position:absolute;border-radius:50%;
+    background:var(--gold-light);
+    box-shadow:0 0 8px 2px rgba(216,177,106,0.7);
+    animation:sparkleFloat linear infinite;
+    opacity:0;
+  }
+  @keyframes sparkleFloat{
+    0%{opacity:0;transform:translateY(0) scale(0.4);}
+    15%{opacity:1;}
+    85%{opacity:.8;}
+    100%{opacity:0;transform:translateY(-140px) scale(1);}
+  }
+
+  /* ambient sparkle layer used in hero & cta */
+  .sparkle-layer{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1;}
+  .sparkle{
+    position:absolute;width:3px;height:3px;border-radius:50%;
+    background:var(--gold-light);
+    box-shadow:0 0 6px 2px rgba(216,177,106,0.85);
+    animation:sparkleFloat ease-in-out infinite;
+    opacity:0;
+  }
+
+  /* ---------- SCROLL REVEAL ---------- */
+  .reveal{
+    opacity:0;transform:translateY(28px);
+    transition:opacity .9s cubic-bezier(.22,.61,.36,1), transform .9s cubic-bezier(.22,.61,.36,1);
+  }
+  .reveal.in-view{opacity:1;transform:translateY(0);}
+
+  /* shimmer sweep across price on reveal, like a confetti glint */
+  .pkg-fold-text.in-view .pkg-price .amount::after{
+    content:"";position:absolute;top:0;left:-150%;width:60%;height:100%;
+    background:linear-gradient(100deg, transparent, rgba(216,177,106,0.6), transparent);
+    animation:shimmerSweep 1.4s ease-out .5s 1;
+  }
+  @keyframes shimmerSweep{
+    to{left:150%;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal, .curtain, .curtain-msg{transition:none !important;animation:none !important;opacity:1 !important;transform:none !important;}
+    .curtain-wrap{display:none !important;}
+    .sparkle{display:none;}
+  }
+</style>
+
+  <div class="curtain-wrap" id="curtainWrap">
+    <div class="curtain left"></div>
+    <div class="curtain right"></div>
+    <div class="curtain-msg">
+      <span class="eyebrow">Fontez Fotografia apresenta</span>
+      todo sonho de 15 anos começa&nbsp;assim
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="bg"><img src="https://raw.githubusercontent.com/Contraktor2026/fontez-15anos-pagina-vendas/main/imagens/fotos%20novas%20para%20colocar%20na%20pagina/15_anos_bianca-2732.jpg" alt=""></div>
+    <div class="sparkle-layer" id="heroSparkles"></div>
+    <div class="hero-top">
+      <div class="logo-mark"><b>FONTEZ</b></div>
+      <div class="logo-sub">FOTOGRAFIA</div>
+    </div>
+    <div class="hero-content">
+      <h1>Quinze anos se vivem uma vez. As fotos ficam para sempre.</h1>
+      <p class="lede">Proposta de investimento fotográfico para a celebração de 15 anos, com cobertura completa, ensaios e álbuns pensados para registrar cada detalhe dessa data.</p>
+      <div class="scroll-cue">Investimento · 15 Anos</div>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="intro reveal">
+    <div class="eyebrow">Fontez Fotografia</div>
+    <h2>Uma festa passa em uma noite. A história que ela conta fica para sempre</h2>
+    <p>Cada proposta a seguir foi pensada para acompanhar sua filha do making-of ao último clique da pista de dança, com liberdade para ajustar cada detalhe ao seu jeito de comemorar.</p>
+  </section>
+
+  <!-- MANIFESTO -->
+  <section class="manifesto">
+    <div class="photo"><img src="https://raw.githubusercontent.com/Contraktor2026/fontez-15anos-pagina-vendas/main/imagens/fotos%20novas%20para%20colocar%20na%20pagina/IMG_1754.WEBP" alt=""></div>
+    <div class="text reveal">
+      <div class="eyebrow" style="color:var(--gold-light)">Nosso propósito</div>
+      <blockquote style="margin-top:16px">
+        "Que através da <mark>fotografia</mark>, você e sua família consigam relembrar de todos os <mark>momentos</mark> com a mesma <mark>intensidade</mark> que foram <mark>vividos</mark>."
+      </blockquote>
+      <cite>Fontez Fotografia</cite>
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section id="pacotes">
+    <div class="section-head reveal">
+      <div class="eyebrow">Escolha seu pacote</div>
+      <h2>Três formas de guardar esse dia</h2>
+      <p>Cada pacote é apenas uma sugestão, que podemos personalizar de acordo com o que a sua família sonhou para esse dia.</p>
+      <div class="pkg-cue">Role para viver cada proposta ↓</div>
+    </div>
+
+    <nav class="pkg-rail" aria-hidden="true">
+      <a href="#pacote-1" data-fold="1"><span class="dot"></span><span class="num">I · Prata</span></a>
+      <a href="#pacote-2" data-fold="2"><span class="dot"></span><span class="num">II · Ouro I</span></a>
+      <a href="#pacote-3" data-fold="3"><span class="dot"></span><span class="num">III · Ouro II</span></a>
+    </nav>
+
+    <!-- PACOTE I — PRATA -->
+    <article class="pkg-fold pkg-fold--1" id="pacote-1" data-fold="1">
+      <div class="pkg-fold-photo">
+        <span class="tier-flag">Pacote I</span>
+        <img src="https://raw.githubusercontent.com/Contraktor2026/fontez-15anos-pagina-vendas/main/imagens/1%20dobra.jfif" alt="Ensaio Prata">
+      </div>
+      <div class="pkg-fold-text reveal">
+        <div class="pkg-fold-index">I <span>/ III</span></div>
+        <div class="pkg-tag">Prata</div>
+        <h3>Intimista e completo</h3>
+        <ul>
+          <li>Cobertura fotográfica do aniversário: <b>making-of, recepção e festa</b></li>
+          <li>Tempo de cobertura: <b>6 horas</b></li>
+          <li>Fotografado por <b>1 fotógrafo</b></li>
+          <li>Até <b>60 convidados</b></li>
+          <li><b>Todas</b> as fotos entregues em alta resolução</li>
+        </ul>
+        <div class="pkg-price">
+          <span class="amount">R$ 2.100</span>
+          <span class="installments">40% de entrada + restante até a data do evento, via PIX ou cartão de crédito (consultar taxas)</span>
+          <span class="pix-note">5% de desconto pagando o valor total à vista no PIX</span>
+        </div>
+        <span class="pkg-badge">Proposta sem álbum</span>
+      </div>
+    </article>
+
+    <div class="pkg-transition pkg-transition--1-2" aria-hidden="true"></div>
+
+    <!-- PACOTE II — OURO I -->
+    <article class="pkg-fold pkg-fold--2" id="pacote-2" data-fold="2">
+      <div class="pkg-fold-photo">
+        <span class="tier-flag">Pacote II</span>
+        <img src="https://raw.githubusercontent.com/Contraktor2026/fontez-15anos-pagina-vendas/main/imagens/fotos%20novas%20para%20colocar%20na%20pagina/IMG_1751.WEBP" alt="Ensaio Ouro I">
+      </div>
+      <div class="pkg-fold-text reveal">
+        <div class="pkg-fold-index">II <span>/ III</span></div>
+        <div class="pkg-tag">Ouro I</div>
+        <h3>O favorito das famílias</h3>
+        <ul>
+          <li>Cobertura fotográfica do aniversário: <b>making-of, recepção e festa</b>, sem limite de horas</li>
+          <li>Fotografado por <b>2 fotógrafos</b></li>
+          <li><b>Todas</b> as fotos entregues em alta resolução</li>
+        </ul>
+        <div class="pkg-extra-label">+ Sessão de fotos Fontez</div>
+        <ul>
+          <li>1 ensaio fotográfico pré-aniversário</li>
+          <li>Média de <b>50 fotos</b> editadas em alta resolução</li>
+        </ul>
+        <div class="pkg-price">
+          <span class="amount">R$ 3.900</span>
+          <span class="installments">40% de entrada + restante até a data do evento, via PIX ou cartão de crédito (consultar taxas)</span>
+          <span class="pix-note">5% de desconto pagando o valor total à vista no PIX</span>
+        </div>
+        <span class="pkg-badge">Proposta sem álbum</span>
+      </div>
+    </article>
+
+    <div class="pkg-transition pkg-transition--2-3" aria-hidden="true"></div>
+
+    <!-- PACOTE III — OURO II -->
+    <article class="pkg-fold pkg-fold--3" id="pacote-3" data-fold="3">
+      <div class="sparkle-layer" id="pkg3Sparkles"></div>
+      <div class="pkg-fold-photo">
+        <span class="tier-flag">Pacote III · completo</span>
+        <img src="https://raw.githubusercontent.com/Contraktor2026/fontez-15anos-pagina-vendas/main/imagens/fotos%20novas%20para%20colocar%20na%20pagina/15_anos_bianca-1265.jpg" alt="Ensaio Ouro II">
+      </div>
+      <div class="pkg-fold-text reveal">
+        <div class="pkg-fold-index">III <span>/ III</span></div>
+        <div class="pkg-tag">Ouro II</div>
+        <h3>A experiência completa</h3>
+        <div class="pkg-video-embed">
+          <iframe src="https://www.youtube.com/embed/MPPB_dhRQc4" title="Vídeo do álbum" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <ul>
+          <li>Cobertura fotográfica do aniversário: <b>making-of, recepção e festa</b>, sem limite de horas</li>
+          <li>Fotografado por <b>2 fotógrafos</b></li>
+          <li><b>Todas</b> as fotos editáveis entregues em alta resolução</li>
+          <li>Álbum encadernado <b>25x25cm, 40 páginas</b> (80 fotos) + luva de courino</li>
+        </ul>
+        <div class="pkg-extra-label">+ Sessão de fotos Fontez</div>
+        <ul>
+          <li>1 ensaio fotográfico pré-aniversário</li>
+          <li>Média de <b>80 fotos</b> editadas em alta resolução</li>
+        </ul>
+        <div class="pkg-price">
+          <span class="amount">R$ 5.900</span>
+          <span class="installments">40% de entrada + restante até a data do evento, via PIX ou cartão de crédito (consultar taxas)</span>
+          <span class="pix-note">5% de desconto pagando o valor total à vista no PIX</span>
+        </div>
+        <span class="pkg-badge">Proposta com álbum</span>
+      </div>
+    </article>
+
+    <p class="note">Consultar taxas do cartão de crédito. As propostas acima são apenas sugestões e podem ser modificadas de acordo com o planejamento do seu aniversário.</p>
+  </section>
+
+  <!-- MINI OFFER (sem festa) -->
+  <article class="offer-fold" id="pacote-ensaio">
+    <div class="pkg-fold-photo">
+      <span class="tier-flag">Sessão avulsa</span>
+      <img src="https://raw.githubusercontent.com/Contraktor2026/fontez-15anos-pagina-vendas/main/imagens/fotos%20novas%20para%20colocar%20na%20pagina/sess%C3%A3o%20avulsa.jpg" alt="Sessão avulsa">
+    </div>
+    <div class="pkg-fold-text reveal">
+      <div class="pkg-fold-index">Sem festa</div>
+      <div class="pkg-tag">Sessão 15 anos</div>
+      <h3>Registre seus 15 anos em grande estilo</h3>
+      <ul>
+        <li>Para quem não vai comemorar com uma festa, mas quer registrar essa data com o mesmo cuidado</li>
+        <li>Sessão fotográfica de 15 anos</li>
+        <li><b>2 horas</b> de ensaio</li>
+        <li><b>2 trocas</b> de roupa</li>
+        <li><b>70 fotos</b> editadas, entregues em alta resolução</li>
+      </ul>
+      <div class="pkg-price">
+        <span class="amount">R$ 870</span>
+        <span class="installments">consultar valores para vídeo com drone</span>
+        <span class="pix-note">5% de desconto pagando o valor total à vista no PIX</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- DEPOIMENTOS -->
+  <section class="testimonials">
+    <div class="section-head reveal">
+      <div class="eyebrow">Depoimentos</div>
+      <h2>Quem já viveu esse dia com a Fontez</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-shot-wrap reveal"><img class="testimonial-shot" src="https://raw.githubusercontent.com/Contraktor2026/fontez-15anos-pagina-vendas/main/imagens/fotos%20novas%20para%20colocar%20na%20pagina/depo1_cropped.png" alt="Depoimento de Tamara Grulke"></div>
+      <div class="testimonial-shot-wrap reveal"><img class="testimonial-shot" src="https://raw.githubusercontent.com/Contraktor2026/fontez-15anos-pagina-vendas/main/imagens/fotos%20novas%20para%20colocar%20na%20pagina/depo2_cropped.png" alt="Depoimento de Kammers Hoffmann"></div>
+      <div class="testimonial-shot-wrap reveal"><img class="testimonial-shot" src="https://raw.githubusercontent.com/Contraktor2026/fontez-15anos-pagina-vendas/main/imagens/fotos%20novas%20para%20colocar%20na%20pagina/depo3_cropped.png" alt="Depoimento de Amanda Martins"></div>
+      <div class="testimonial-shot-wrap reveal"><img class="testimonial-shot" src="https://raw.githubusercontent.com/Contraktor2026/fontez-15anos-pagina-vendas/main/imagens/fotos%20novas%20para%20colocar%20na%20pagina/depo4_cropped.png" alt="Depoimento de Bruna Pinheiro"></div>
+    </div>
+  </section>
+
+  <!-- FECHAMENTO -->
+  <section class="closing">
+    <div class="closing-content reveal">
+      <div class="eyebrow" style="color:var(--gold-light)">Vamos conversar?</div>
+      <h2>Seu dia merece ser guardado com cuidado</h2>
+      <p>Conte pra gente como imagina esse dia e a gente monta a proposta ideal pra sua família.</p>
+      <div class="closing-btns">
+        <a class="closing-btn closing-btn--solid" href="https://wa.me/5548998593027" target="_blank" rel="noopener">Falar no WhatsApp</a>
+        <a class="closing-btn" href="https://www.fontezfotografia.com.br/" target="_blank" rel="noopener">Visitar nosso site</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="lightbox-overlay" id="lightbox">
+    <span class="lightbox-close" id="lightboxClose">&times;</span>
+    <img id="lightboxImg" src="" alt="">
+  </div>
+
+  <footer>
+    <div class="flogo">FONTEZ FOTOGRAFIA</div>
+    <div class="contacts">
+      <a href="https://www.fontezfotografia.com.br/" target="_blank" rel="noopener">fontezfotografia.com.br</a>
+      <a href="http://instagram.com/fontezfotografia" target="_blank" rel="noopener">@fontezfotografia</a>
+      <a href="https://wa.me/5548998593027" target="_blank" rel="noopener">WhatsApp (48) 99859-3027</a>
+    </div>
+    <div class="copyright">Fontez Fotografia, Imbituba, SC</div>
+  </footer>
+
+  <script>
+  (function(){
+    // ---- Cortina de abertura (o sonho começa) ----
+    var wrap = document.getElementById('curtainWrap');
+    function openCurtain(){
+      wrap.classList.add('opening');
+      setTimeout(function(){ wrap.classList.add('done'); }, 1500);
+    }
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      wrap.classList.add('done');
+    } else {
+      window.addEventListener('load', function(){
+        setTimeout(openCurtain, 1200);
+      });
+      // fallback caso 'load' demore (imagens grandes em base64)
+      setTimeout(openCurtain, 2600);
+    }
+
+    // ---- Brilhos flutuantes (hero e cta) ----
+    function spawnSparkles(containerId, count){
+      var el = document.getElementById(containerId);
+      if(!el) return;
+      for(var i=0;i<count;i++){
+        var s = document.createElement('span');
+        s.className = 'sparkle';
+        var size = 2 + Math.random()*3;
+        s.style.width = size+'px';
+        s.style.height = size+'px';
+        s.style.left = Math.random()*100+'%';
+        s.style.top = 20+Math.random()*70+'%';
+        var dur = 3.5 + Math.random()*4;
+        s.style.animationDuration = dur+'s';
+        s.style.animationDelay = (Math.random()*dur)+'s';
+        el.appendChild(s);
+      }
+    }
+    spawnSparkles('heroSparkles', 26);
+    spawnSparkles('ctaSparkles', 22);
+    spawnSparkles('pkg3Sparkles', 16);
+
+    // ---- Trilha lateral dos pacotes (I / II / III) ----
+    var pkgSection = document.getElementById('pacotes');
+    var pkgRail = document.querySelector('.pkg-rail');
+    var pkgFolds = document.querySelectorAll('.pkg-fold');
+    var pkgRailLinks = document.querySelectorAll('.pkg-rail a');
+    if(pkgSection && pkgRail && 'IntersectionObserver' in window){
+      var railVisibilityIO = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          pkgRail.classList.toggle('is-visible', entry.isIntersecting);
+        });
+      }, {threshold:0.04});
+      railVisibilityIO.observe(pkgSection);
+
+      var railActiveIO = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            var idx = entry.target.getAttribute('data-fold');
+            pkgRailLinks.forEach(function(a){
+              a.classList.toggle('active', a.getAttribute('data-fold') === idx);
+            });
+          }
+        });
+      }, {threshold:0.5});
+      pkgFolds.forEach(function(f){ railActiveIO.observe(f); });
+    } else if(pkgRail){
+      pkgRail.style.display = 'none';
+    }
+
+    // ---- Reveal ao rolar (entrada tipo festa) ----
+    var revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
+    if('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            entry.target.classList.add('in-view');
+            io.unobserve(entry.target);
+          }
+        });
+      }, {threshold:0.18, rootMargin:'0px 0px -60px 0px'});
+      revealEls.forEach(function(el){ io.observe(el); });
+    } else {
+      revealEls.forEach(function(el){ el.classList.add('in-view'); });
+    }
+
+    // ---- Lightbox dos depoimentos ----
+    var lightbox = document.getElementById('lightbox');
+    var lightboxImg = document.getElementById('lightboxImg');
+    var lightboxClose = document.getElementById('lightboxClose');
+    document.querySelectorAll('.testimonial-shot').forEach(function(img){
+      img.addEventListener('click', function(){
+        lightboxImg.src = img.src;
+        lightbox.classList.add('active');
+      });
+    });
+    function closeLightbox(){ lightbox.classList.remove('active'); lightboxImg.src=''; }
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', function(e){ if(e.target === lightbox) closeLightbox(); });
+  })();
+  </script>
