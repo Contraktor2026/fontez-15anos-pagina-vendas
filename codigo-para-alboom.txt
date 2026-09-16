@@ -422,7 +422,7 @@
       <div class="logo-sub">FOTOGRAFIA</div>
     </div>
     <div class="hero-content">
-      <h1>Quinze anos se vivem uma vez.<br>As fotos ficam para sempre.</h1>
+      <h1>Quinze anos se vive uma vez.<br>As fotos ficam para sempre.</h1>
       <p class="lede">Proposta de investimento fotográfico para a celebração de 15 anos, com cobertura completa, ensaios e álbuns pensados para registrar cada detalhe dessa data.</p>
       <div class="scroll-cue">Investimento · 15 Anos</div>
     </div>
@@ -477,7 +477,7 @@
           <li>Tempo de cobertura: <b>6 horas</b></li>
           <li>Fotografado por <b>1 fotógrafo</b></li>
           <li>Até <b>60 convidados</b></li>
-          <li><b>Todas</b> as fotos entregues em alta resolução via link do Google Drive</li>
+          <li><b>Todas</b> as fotos entregues em alta resolução via link do Google Drive, em arquivo digital</li>
         </ul>
         <div class="pkg-price">
           <span class="amount">R$ 2.100</span>
@@ -503,7 +503,7 @@
         <ul>
           <li>Cobertura fotográfica do aniversário: <b>making-of, recepção e festa</b>, sem limite de horas</li>
           <li>Fotografado por <b>2 fotógrafos</b></li>
-          <li><b>Todas</b> as fotos entregues em alta resolução via link do Google Drive</li>
+          <li><b>Todas</b> as fotos entregues em alta resolução via link do Google Drive, em arquivo digital</li>
         </ul>
         <div class="pkg-extra-label">+ Sessão de fotos Fontez</div>
         <ul>
@@ -538,7 +538,7 @@
         <ul>
           <li>Cobertura fotográfica do aniversário: <b>making-of, recepção e festa</b>, sem limite de horas</li>
           <li>Fotografado por <b>2 fotógrafos</b></li>
-          <li><b>Todas</b> as fotos entregues em alta resolução via link do Google Drive</li>
+          <li><b>Todas</b> as fotos entregues em alta resolução via link do Google Drive, em arquivo digital</li>
           <li>Álbum encadernado <b>25x25cm, 40 páginas</b> (80 fotos) + luva de courino</li>
         </ul>
         <div class="pkg-extra-label">+ Sessão de fotos Fontez</div>
@@ -580,7 +580,7 @@
         <li>Sessão fotográfica de 15 anos</li>
         <li><b>2 horas</b> de ensaio</li>
         <li><b>2 trocas</b> de roupa</li>
-        <li><b>50 fotos</b> editadas, entregues em alta resolução via link do Google Drive</li>
+        <li><b>50 fotos</b> editadas, entregues em alta resolução via link do Google Drive, em arquivo digital</li>
       </ul>
       <div class="pkg-price">
         <span class="amount">R$ 870</span>
